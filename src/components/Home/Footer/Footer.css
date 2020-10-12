@@ -1,0 +1,16 @@
+footer{
+    background:#FBD062;
+    padding:3rem 0px 1rem;
+}
+.titleHeading{
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.paragraph{
+    font-size: 15px;
+    color:gray;
+}
+.form-control{
+    border-radius: 1px;
+    border:none;
+}

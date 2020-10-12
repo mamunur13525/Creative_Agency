@@ -1,0 +1,33 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+.actives::after{
+   background-color: green;
+   content:'';
+   display: block;
+   height:4px;
+   width:45px;
+   position: absolute;
+}
+.logo{
+    width:140px;
+}
+.navbar{
+    padding: 35px 10px;
+
+}
+.navbar-nav li{
+    margin: 0px 18px;
+}
+.navbar-nav li a{
+    padding:0px;
+}
+.navbar-nav li a:hover{
+    border-bottom: 3px solid green;
+    
+}
+ 
+.btn_custom{
+    padding: 5px 40px;
+}

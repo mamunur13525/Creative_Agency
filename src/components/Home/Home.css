@@ -1,0 +1,15 @@
+*{
+    margin:0px;
+    padding:0px;
+ 
+}
+body{
+    background:white!important;
+}
+.background{
+    background-image: url('../../images/rectangle.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    padding-bottom: 18px;
+}
