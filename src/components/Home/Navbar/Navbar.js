@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { UserContext } from '../../../App';
 import logo from '../../../images/logos/logo.png';
 import './Navbar.css';
 
@@ -6,6 +8,8 @@ const Navbar = () => {
     const style ={
         fontWeight: '500'
     }
+
+    const [loggedIn, setLoggedIn] = useContext(UserContext)
     return (
         <div  className="container">
             <nav style={style} className="navbar navbar-expand-lg navbar-light">
@@ -23,9 +27,12 @@ const Navbar = () => {
                                     <a className="nav-link" href="#">Our Team</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Contact Us</a>
+                                    <a className="nav-link" href="#contact">Contact Us</a>
                                 </li>
-                                <button className="btn  btn-dark btn_custom">Login</button>
+                             {
+                                 loggedIn.email?<div><img className="profile" src={loggedIn.photoURL} alt=""/> <p style={{display: "inline"}}>{loggedIn.displayName}</p></div>: <Link to="/login">  <button className="btn  btn-dark btn_custom">Login</button></Link>
+                             }
+                            
                             </ul>
                         </div>
             </nav>

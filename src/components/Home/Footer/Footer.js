@@ -3,7 +3,7 @@ import './Footer.css';
 
 const Footer = () => {
     return (
-        <footer>
+        <footer id="contact">
             <div className="container">
 
                 <div className="row d-flex justify-content-between">

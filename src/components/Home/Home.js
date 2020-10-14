@@ -11,7 +11,7 @@ import Footer from './Footer/Footer';
 
 const Home = () => {
     return (
-        <div className="main">
+        <div>
             <div className="background">
                 <Navbar></Navbar>
                 <HeaderMain></HeaderMain>
