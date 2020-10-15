@@ -41,7 +41,7 @@ const Works = () => {
                                 <div className="row">
                                    {
                                        works.map(work =>  
-                                       <div key={work._id} className="col-md-3">
+                                       <div key={work._id} className="col-md-3 my-3">
                                             <a href="#">
                                                 <img src={work.img} alt="Image" style={{maxWidth:"100%"}}/>
                                             </a>
@@ -57,7 +57,7 @@ const Works = () => {
                                 <div className="row">
                                 {
                                        works4.map(work =>  
-                                       <div key={work._id}className="col-md-3">
+                                       <div key={work._id}className="col-md-3 my-3">
                                             <a href="#">
                                                 <img src={work.img} alt="Image" style={{maxWidth:"100%"}}/>
                                             </a>

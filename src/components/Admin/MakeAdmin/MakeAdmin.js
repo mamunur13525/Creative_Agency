@@ -24,6 +24,10 @@ const MakeAdmin = () => {
                   headers: { 'content-type':'application/json'},
                   body:JSON.stringify(admin)
               })
+              .then(res => res.json())
+              .then(result => {
+                alert('Admin Make Succesfully')
+              })
 
               e.preventDefault()
   }

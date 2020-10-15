@@ -65,3 +65,47 @@ input[type=number] {
 .hover:hover{
     text-decoration: none;
 }
+
+@media (max-width: 1000px){
+    .main {
+        margin-left: 50px;
+    }
+}
+@media (max-width: 800px){
+    .main {
+        margin-left: 30px;
+        position: absolute;
+        top: 300px;
+    }
+    .main {
+     
+        margin-top: 50px;
+    }
+    .side_bar {
+        width: 300px!important;
+        padding-top: 50px;
+        margin: auto;
+        padding-left: 80px;
+    }
+    input.btn.w-25.btnSubmit.btn-dark.btn_custom {
+        width: 100px!important;
+    }
+    .boxss{
+        width:100% !important;
+    }
+    input.btn.btn-outline-success {
+        width: 250px;
+    }
+    .d-flex {
+        
+        display: block!important;}
+        input.submit {
+            width: 200px!important;
+            bottom: -110px;
+            color: white;
+            font-weight: 500;
+        }
+        button.btn.mlbtn {
+            margin-left: 110px;
+        }
+}

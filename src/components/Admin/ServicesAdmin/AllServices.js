@@ -1,20 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../../App';
 
 
 const AllServices = ({services}) => {
     const [loggedIn, setLoggedIn] = useContext(UserContext)
+    const [change, setChange] = useState({})
 
-    const handleChange =(event) => {
-        const status = event.target.value;
- 
-        fetch(`http://localhost:5000/id?id=hello`,{
-            method:'PATCH',
-            headers: { 'content-type':'application/json'},
-            body:JSON.stringify(status)
-        })
+    const handleChange =(event,serviceid) => {
+        const status = {status:`${event.target.value}`};
+     console.log(serviceid)
+       
+            fetch(`http://localhost:5000/id?id=${serviceid}`,{
+                method:'PATCH',
+                headers: { 'content-type':'application/json'},
+                body:JSON.stringify(status)
+            })
+    
   
     }
+
+  
+console.log(services)
+
     return (
         <tr>                            
             <td>{services.name}</td>
@@ -24,7 +31,7 @@ const AllServices = ({services}) => {
             <td className="td-actions ">
           
       
-                <select onChange={handleChange}>
+                <select defaultValue={services.status} onChange={(event)=>handleChange(event,services._id)}>
                     <option >Pending</option>
                     <option >On Going</option>
                     <option>Done</option>

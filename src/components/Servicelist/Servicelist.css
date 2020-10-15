@@ -8,10 +8,7 @@ button.btn.btn-pending,button.btn.btn-done{
     height: 44px;
 }
 
-button.btn.btn-pending{
-    background: #FFE3E3;
-    color: red;
-}
+
 button.btn.btn-done{
     background: #C6FFE0;
     color: green;

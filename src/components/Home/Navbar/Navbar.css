@@ -17,15 +17,14 @@
     padding: 35px 10px;
 
 }
-.navbar-nav li{
-    margin: 0px 18px;
+.navbar-nav li {
+    margin: 15px 18px;
 }
 .navbar-nav li a{
     padding:0px;
 }
-.navbar-nav li a:hover{
-    border-bottom: 3px solid green;
-    
+a.nav-link {
+    margin-top: 5px;
 }
  
 .btn_custom{

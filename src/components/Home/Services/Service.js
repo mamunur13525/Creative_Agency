@@ -21,14 +21,15 @@ const Service = ({service}) => {
        
 
     return (
-        <div className="col-md-4">
+        <div className="col-md-6 col-lg-4 col-sm-12">
                                 
             <Link to='/order'>
                 <div onClick={handleClick} className="boxx ">
-                    <div className="opacity"></div>
+                    <div className="opacity">
                     <img className='icon' src={service.img ||`http://localhost:5000/${service.fileName}`} alt="logo"/>
                    <h4>{service.title}</h4>
                     <p className="text-secondary">{service.description}</p>
+                        </div>
                         </div>
              </Link>
         </div>

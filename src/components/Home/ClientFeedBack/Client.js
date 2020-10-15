@@ -3,7 +3,7 @@ import React from 'react';
 const Client = ({client}) => {
     return (
       
-              <div key={client._id} className="col-md-4">
+              <div key={client._id} className="col-md-12">
                         <div className="boxes">
                             <div className="d-flex">
                                  <img className='customar' src={client.img} alt=""/>
