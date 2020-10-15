@@ -28,7 +28,7 @@ const [allservices, setAllservices] = useState([]);
                     <div className="d-flex  my-3" style={{color:'#30D4C7'}}><FontAwesomeIcon className="m-2" icon={faServer} />  <p className="hover">Service list</p></div>  
 
                     <Link className="hover" to="/admin/addservice">   <div className="d-flex " ><FontAwesomeIcon className="m-2" icon={faShoppingCart} /><p className="hover">Add Service</p></div>   </Link>
-                      <Link className="hover" to="/admin/makeadmin"> <div className="d-flex "><FontAwesomeIcon className="m-2" icon={faEnvelope} /> <p className="hover">Review</p></div>  </Link> 
+                      <Link className="hover" to="/admin/makeadmin"> <div className="d-flex "><FontAwesomeIcon className="m-2" icon={faEnvelope} /> <p className="hover">Make Admin</p></div>  </Link> 
                     </div> 
               </div>
             <div className="main">

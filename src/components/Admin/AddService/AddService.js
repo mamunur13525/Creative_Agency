@@ -62,10 +62,10 @@ console.log(loggedIn)
                     <Link className="hover" to="/"> <img className="logo" src={logo} alt="logo"/></Link>
 
                     <div className="mt-5 font-weight-bold">
-                    <div className="d-flex  my-3" ><FontAwesomeIcon className="m-2" icon={faServer} />  <p className="hover">Service list</p></div>  
+                <Link to="/admin/servicelist">   <div className="d-flex  my-3" ><FontAwesomeIcon className="m-2" icon={faServer} />  <p className="hover">Service list</p></div>  </Link> 
 
                     <Link className="hover" to="/admin/addservice" style={{color:'#30D4C7'}}>   <div className="d-flex " ><FontAwesomeIcon className="m-2" icon={faShoppingCart} /><p className="hover">Add Service</p></div>   </Link>
-                      <Link className="hover" to="/admin/makeadmin"> <div className="d-flex "><FontAwesomeIcon className="m-2" icon={faEnvelope} /> <p className="hover">make Admin</p></div>  </Link> 
+                      <Link className="hover" to="/admin/makeadmin"> <div className="d-flex "><FontAwesomeIcon className="m-2" icon={faEnvelope} /> <p className="hover">Make Admin</p></div>  </Link> 
                     </div> 
               </div>
             <div className="main">

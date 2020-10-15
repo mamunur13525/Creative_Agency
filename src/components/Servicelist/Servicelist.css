@@ -20,6 +20,9 @@ button.btn.btn-done{
     border-radius: 10px;
 }
 .logo-icon{
-    width:55px;
+    height: 55px;
+    width: 55px;
     margin-bottom: 15px;
+    border-radius: 50%;
+ 
 }

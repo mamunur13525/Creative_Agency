@@ -10,9 +10,30 @@ import './MakeAdmin.css'
 
 
 const MakeAdmin = () => {
-    const { register, handleSubmit} = useForm();
-    const onSubmit = data => {}
+  const [admin, setAdmin] = useState({})
+  
+  const handleChange = (e) => {
+      const email = {adminEmail:e.target.value}
+      setAdmin(email)
+  }
 
+  const handleSubmit=(e)=>{
+   console.log(admin)
+      fetch('http://localhost:5000/adminlogin',{
+                  method:'POST',
+                  headers: { 'content-type':'application/json'},
+                  body:JSON.stringify(admin)
+              })
+
+              e.preventDefault()
+  }
+  
+
+
+       
+
+
+      
     return (
         <div style={{background:'yellow'}}>
         <header className="header d-flex">
@@ -21,10 +42,10 @@ const MakeAdmin = () => {
                     <Link className="hover" to="/"> <img className="logo" src={logo} alt="logo"/></Link>
 
                     <div className="mt-5 font-weight-bold">
-                    <div className="d-flex  my-3" style={{color:'#30D4C7'}}><FontAwesomeIcon className="m-2" icon={faServer} />  <p className="hover">Service list</p></div>  
+                   <Link to="/admin/servicelist"> <div className="d-flex  my-3" style={{color:'#30D4C7'}}><FontAwesomeIcon className="m-2" icon={faServer} />  <p className="hover">Service list</p></div>  </Link>
 
                     <Link className="hover" to="/admin/addservice">   <div className="d-flex " ><FontAwesomeIcon className="m-2" icon={faShoppingCart} /><p className="hover">Add Service</p></div>   </Link>
-                      <Link className="hover" to="/admin/makeadmin"> <div className="d-flex "><FontAwesomeIcon className="m-2" icon={faEnvelope} /> <p className="hover">Review</p></div>  </Link> 
+                      <Link className="hover" to="/admin/makeadmin"> <div className="d-flex "><FontAwesomeIcon className="m-2" icon={faEnvelope} /> <p className="hover">Make Admin</p></div>  </Link> 
                     </div> 
               </div>
             <div className="main">
@@ -32,10 +53,10 @@ const MakeAdmin = () => {
                   <div className="formbox">
                     <div className="detail row">
                        
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form onSubmit={handleSubmit}>
                      <h4 id='headingFour'>   Email</h4>
                               <div id="width">
-                              <input ref={register} placeholder="Enter Your Email" type="text" name="email" id="name"/>
+                              <input onBlur={handleChange} placeholder="Enter Your Email" type="text" name="email" id="name"/>
                                
                                <input className='btn w-25 btnSubmit btn-success btn_custom' type="submit" name="" id=""/>
                               </div>

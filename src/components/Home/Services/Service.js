@@ -11,7 +11,7 @@ const Service = ({service}) => {
         const handleClick = ()=>{
             const id = service._id;
             
-            setContent(service)
+            setContent({img:`http://localhost:5000/${service.fileName}`,...service})
           
            setLoggedIn({...loggedIn,id:id})
         }
