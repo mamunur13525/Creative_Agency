@@ -1,0 +1,10 @@
+h4#headingFour {
+    margin: 20px;
+}
+.width{
+    width: 35rem;
+    display: inline;
+}
+.width input{
+    margin: 0px 10px!important;
+}

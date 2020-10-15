@@ -11,7 +11,10 @@ const Services = () => {
         .then(res => res.json())
         .then(result => setServices(result))
     },[])
-  
+    
+    const handleCLick =(e)=>{
+        console.log(e.target)
+    }
   
     return (
         <section className="services_section">
@@ -19,7 +22,7 @@ const Services = () => {
             <div className="container">
                 <div className="row box text-center">
                    {
-                       services.map(service =>  <Service key={service._id} service={service}></Service> )
+                       services.map(service =>  <Service onClick={(e)=>handleCLick(e)} key={service._id} service={service}></Service> )
 
                    }
                   

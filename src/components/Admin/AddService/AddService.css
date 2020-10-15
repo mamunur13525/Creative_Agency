@@ -1,0 +1,23 @@
+form.form {
+    width: 100%;
+
+}
+
+.boxss{
+    width:50%;
+}
+.second textarea{
+    height: 200px;
+}
+input.submit {
+    width: 200px!important;
+    position: absolute;
+    right: 300px;
+    bottom: -110px;
+    color: white;
+    font-weight: 500;
+   
+}
+.boxxxx{
+    position: relative;
+}

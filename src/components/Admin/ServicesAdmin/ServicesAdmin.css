@@ -1,0 +1,24 @@
+  .table{  
+    width: 95%;
+    margin: 1rem 1.5rem;
+    color: #212529;
+    background: white;
+    border-radius: 10px;
+    font-weight: 500;
+}
+.table-head-row{
+    background: #ddd;
+    color:#696969;
+
+
+}
+tbody{
+    border:none!important;
+}
+    .outsideTable {
+        padding: 0px;
+        background: white;
+        margin: 20px;
+        width: 93%;
+    }
+   

@@ -6,7 +6,7 @@ const PrivateRoute = ({ children, ...rest }) => {
 
 const [loggedIn, setLoggedIn] = useContext(UserContext)
 
-console.log(loggedIn)
+
     return (
 
           <Route

@@ -7,13 +7,18 @@
 .customar{
     width:50px;
     height:50px;
+    border-radius: 50%;
     margin-right: 20px;
     margin-bottom: 30px;
 }
 .boxes{
    border:1px solid rgb(207, 206, 206);
    padding: 15px 20px 5px;
+   margin: 10px;
+   height: 220px;
+   width: 340px;
 }
 .title h5, .title h4{
     font-weight: bolder;
 }
+

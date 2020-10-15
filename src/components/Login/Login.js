@@ -55,7 +55,7 @@ const Login = () => {
                         <img className="google_logo" src={google_img} alt=""/>
                         <span>Continue With Google</span>
                     </div>
-                   <p className="create_account">Don't have an account?<span style={{color:'blue',cursor:'pointer', textDecoration:"underline"}}>Create an account</span></p> 
+                   <p onClick={googleSingUp} className="create_account">Don't have an account?<span style={{color:'blue',cursor:'pointer', textDecoration:"underline"}}>Create an account</span></p> 
                 </div>
         </div>
     );

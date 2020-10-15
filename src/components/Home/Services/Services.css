@@ -7,10 +7,12 @@
     font-size: 32px;
     margin-bottom: 46px;
 }
-.icon{
-    width:60px;
+.icon {
     margin-top: 70px;
+    border-radius: 50%;
     margin-bottom: 25px;
+    width: 70px;
+    height: 70px;
 }
 .box h4{
     font-weight: bold;
