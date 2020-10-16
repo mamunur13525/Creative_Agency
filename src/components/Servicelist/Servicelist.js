@@ -16,20 +16,23 @@ import logo from '../../images/logos/logo.png';
 const Servicelist = () => {
 
   const  spinner = 'https://miro.medium.com/max/1600/1*CsJ05WEGfunYMLGfsT2sXA.gif';
-
+  const trash = 'https://i.ibb.co/hD6ZzGj/121473614-1498812373641223-8720674945442455752-n.png';
   const [loggedIn, setLoggedIn] = useContext(UserContext)
   const [services , setServices] = useState([]);
+  const [spindata, setSpindata] = useState(null)
+  const [emty, setEmty] = useState([{hello:'nothing'}])
     useEffect(()=>{
 
         fetch(`https://tranquil-scrubland-64359.herokuapp.com/servicelist?email=${loggedIn.email}`)
         .then(res => res.json())
         .then(result => {
           setServices(result)
-          
+          setSpindata(result)
+          setEmty(result)
         })
 
     },[])
-  
+  console.log(emty)
 
     return (
         <div style={{background:'yellow'}}>
@@ -49,8 +52,12 @@ const Servicelist = () => {
                       <div className="formbox">
                         <div className="detail row">
                               {
-                              services.length === 0 && <div className='img'> <img className="img-fluid" src={spinner}  alt="spinner"/> <h5 className="text-center">Loding</h5></div>
-                          }
+                              spindata === null && <div className='img'> <img className="img-fluid" src={spinner}  alt="spinner"/> <h5 className="text-center">Loding</h5></div>
+                              }
+                          
+                              {
+                              emty.length === 0 && <div><img src={trash} alt="trash"/><h4 className="text-center">Emty Data</h4></div>
+                              }
                           
                               {
                                 services.map(service => <Servicess key={service._id} servicess={service}></Servicess>)
