@@ -45,7 +45,7 @@ const Servicelist = () => {
                         </div> 
                   </div>
                 <div className="main">
-                      <h4>Your Order</h4>
+                      <h4>Service List</h4>
                       <div className="formbox">
                         <div className="detail row">
                               {

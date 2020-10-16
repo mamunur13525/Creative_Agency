@@ -25,7 +25,7 @@ const AllServices = ({services}) => {
                     <td className="td-actions ">
                 
             
-                <select defaultValue={services.status} onChange={(event)=>handleChange(event,services._id)}>
+                <select className="selecOption" defaultValue={services.status} onChange={(event)=>handleChange(event,services._id)}>
                     <option >Pending</option>
                     <option >On Going</option>
                     <option>Done</option>

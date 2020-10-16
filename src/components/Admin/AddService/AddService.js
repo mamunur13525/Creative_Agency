@@ -67,7 +67,7 @@ const Addservice = () => {
                     </div> 
               </div>
             <div className="main">
-                  <h4>Your Order</h4>
+                  <h4>Add Service</h4>
                   <div className="formbox">
                     <div className="detail row">
                     <form  onSubmit={handleSubmit} className="boxxxx form">

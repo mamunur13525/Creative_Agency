@@ -33,7 +33,7 @@ const [allservices, setAllservices] = useState([]);
                     </div> 
               </div>
             <div className="main">
-                  <h4>Your Order</h4>
+                  <h4>Add Services</h4>
                   <div className="formbox">
                     <div className="detail row">
                         <div className="outsideTable">

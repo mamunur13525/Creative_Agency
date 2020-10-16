@@ -22,3 +22,9 @@ tbody{
         width: 93%;
     }
    
+    .selecOption{
+        border:none;
+    }
+    .selecOption:focus{
+        outline:none;
+    }
