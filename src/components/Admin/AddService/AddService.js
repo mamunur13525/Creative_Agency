@@ -35,7 +35,7 @@ const Addservice = () => {
 
     const handleSubmit= (event)=>{
       event.preventDefault()
-        fetch('http://localhost:5000/addAService', {
+        fetch('https://tranquil-scrubland-64359.herokuapp.com/addAService', {
           method: 'POST',
           body: formData
         })
@@ -73,7 +73,7 @@ console.log(loggedIn)
                   <div className="formbox">
                     <div className="detail row">
                     <form  onSubmit={handleSubmit} className="boxxxx form">
-                      <div className="d-flex ">
+                      <div className="d-flex threeBox">
                             <div className="boxss">
                                 <div className=" first">
                                     <h5 className="ml-4 mt-4">services title</h5>
@@ -90,7 +90,7 @@ console.log(loggedIn)
 
                                 </div>
                     </div>
-                    <input  className="submit btn btn-success" type="submit" value="Submit"/>
+                    <input  className="submit btn btn-success submitBtn" type="submit" value="Submit"/>
                     </form>
                            
                           

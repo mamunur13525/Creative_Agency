@@ -19,7 +19,7 @@ const MakeAdmin = () => {
 
   const handleSubmit=(e)=>{
    console.log(admin)
-      fetch('http://localhost:5000/adminlogin',{
+      fetch('https://tranquil-scrubland-64359.herokuapp.com/adminlogin',{
                   method:'POST',
                   headers: { 'content-type':'application/json'},
                   body:JSON.stringify(admin)

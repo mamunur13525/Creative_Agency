@@ -7,7 +7,7 @@ const Works = () => {
     const [works, setWorks] = useState([])
     const [works4, setWorks4] = useState([])
     useEffect(()=> {
-        fetch('http://localhost:5000/works')
+        fetch('https://tranquil-scrubland-64359.herokuapp.com/works')
         .then(res => res.json())
         .then(result =>{
             const four = result.slice(0, 4)
@@ -38,6 +38,7 @@ const Works = () => {
                         <div className="carousel-inner">
 
                             <div className="carousel-item active">
+                         
                                 <div className="row">
                                    {
                                        works.map(work =>  
@@ -55,6 +56,7 @@ const Works = () => {
 
                             <div className="carousel-item">
                                 <div className="row">
+                              
                                 {
                                        works4.map(work =>  
                                        <div key={work._id}className="col-md-3 my-3">

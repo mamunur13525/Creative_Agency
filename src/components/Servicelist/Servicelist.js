@@ -14,13 +14,14 @@ import logo from '../../images/logos/logo.png';
 
 
 const Servicelist = () => {
+
+  const  spinner = 'https://miro.medium.com/max/1600/1*CsJ05WEGfunYMLGfsT2sXA.gif';
+
   const [loggedIn, setLoggedIn] = useContext(UserContext)
-  
-  
   const [services , setServices] = useState([]);
     useEffect(()=>{
 
-        fetch(`http://localhost:5000/servicelist?email=${loggedIn.email}`)
+        fetch(`https://tranquil-scrubland-64359.herokuapp.com/servicelist?email=${loggedIn.email}`)
         .then(res => res.json())
         .then(result => {
           setServices(result)
@@ -47,6 +48,10 @@ const Servicelist = () => {
                       <h4>Your Order</h4>
                       <div className="formbox">
                         <div className="detail row">
+                              {
+                              services.length === 0 && <div className='img'> <img className="img-fluid" src={spinner}  alt="spinner"/> <h5 className="text-center">Loding</h5></div>
+                          }
+                          
                               {
                                 services.map(service => <Servicess key={service._id} servicess={service}></Servicess>)
                               }

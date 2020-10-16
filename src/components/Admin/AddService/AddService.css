@@ -21,3 +21,11 @@ input.submit {
 .boxxxx{
     position: relative;
 }
+@media (max-width:800px){
+    .threeBox{
+        display: block!important;
+    }
+    .submitBtn{
+       position: static!important;
+    }
+}

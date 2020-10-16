@@ -35,3 +35,12 @@
 Link{
     text-decoration: none;
 }
+
+.img{
+    width:300px;
+    margin:auto;
+    margin-bottom: 0px;
+}
+img.h5{
+    font-size: 30px;
+}

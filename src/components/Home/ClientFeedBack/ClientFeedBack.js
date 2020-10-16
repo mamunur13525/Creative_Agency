@@ -7,9 +7,10 @@ import Client from './Client';
 
 
 const ClientFeedBack = () => {
+  const  spinner = 'https://miro.medium.com/max/1600/1*CsJ05WEGfunYMLGfsT2sXA.gif';
     const [clients, setClients] = useState([])
         useEffect(()=>{
-            fetch('http://localhost:5000/clientFeedback')
+            fetch('https://tranquil-scrubland-64359.herokuapp.com/clientFeedback')
             .then(res => res.json())
             .then(result => setClients(result))
 
@@ -21,9 +22,9 @@ const ClientFeedBack = () => {
             slidesToShow: 3,
             slidesToScroll: 3,
             autoplay: true,
-            speed: 5000,
+            speed: 1000,
             swipeToSlide: true,
-            autoplaySpeed: 5000,
+            autoplaySpeed: 4000,
             cssEase: "linear",
             responsive: [
                 {
@@ -36,11 +37,19 @@ const ClientFeedBack = () => {
                   }
                 },
                 {
-                  breakpoint: 700,
+                  breakpoint: 800,
                   settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
                     initialSlide: 2
+                  }
+                },
+                {
+                  breakpoint: 600,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    initialSlide: 1
                   }
                 },
                 {
@@ -68,6 +77,9 @@ const ClientFeedBack = () => {
 
  
          <div> 
+                 {
+                        clients.length === 0 && <div className='img'> <img className="img-fluid" src={spinner}  alt="spinner"/> <h5 className="text-center">Loding</h5></div>
+                    }
              <Slider className="row"  {...settings}>
                
                {

@@ -20,7 +20,7 @@ console.log(loggedIn)
     const onSubmit = data => {
         data.img = loggedIn.photoURL;
      
-        fetch('http://localhost:5000/client',{
+        fetch('https://tranquil-scrubland-64359.herokuapp.com/client',{
             method:'POST',
             headers: { 'content-type':'application/json'},
             body:JSON.stringify(data)
@@ -59,7 +59,7 @@ console.log(loggedIn)
                               
                               
                                 <input ref={register} placeholder="Compoany'name and Designation" type="text"  name="work" id="work" required/>
-                                <textarea ref={register} className="form-control" placeholder="Description" name="description" id=""  rows="4" required></textarea>
+                                <textarea ref={register} className="form-control"  placeholder="Description" name="description" id="textarea"  rows="4" required></textarea>
                                
                                 <input className='btn w-25 btnSubmit btn-dark btn_custom' type="submit" name="" id=""/>
                             </form>

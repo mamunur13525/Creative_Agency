@@ -16,7 +16,7 @@ const Servicess = ({servicess}) => {
   }
 
     return (
-        <div className="first col-md-5 col-sm-8 bg-white m-4 p-4 ">
+        <div className="first col-lg-5 col-md-8 col-sm-10  bg-white m-4 p-4 ">
                                <div className="d-flex justify-content-between mb-5">
                                    <img className="logo-icon mb-0" src={servicess.img} alt="logo"/>
                                   <button style={className==="Done"?done:pending} className='btn mlbtn'>{servicess.status}</button>

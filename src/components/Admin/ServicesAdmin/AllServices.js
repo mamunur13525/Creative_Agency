@@ -10,7 +10,7 @@ const AllServices = ({services}) => {
         const status = {status:`${event.target.value}`};
      console.log(serviceid)
        
-            fetch(`http://localhost:5000/id?id=${serviceid}`,{
+            fetch(`https://tranquil-scrubland-64359.herokuapp.com/id?id=${serviceid}`,{
                 method:'PATCH',
                 headers: { 'content-type':'application/json'},
                 body:JSON.stringify(status)
@@ -25,12 +25,12 @@ console.log(services)
     return (
         <tr>                            
             <td>{services.name}</td>
-    <td>{services.email}</td>
-    <td>{services.work}</td>
-    <td className="w-25">{services.description}</td>
-            <td className="td-actions ">
-          
-      
+            <td>{services.email}</td>
+            <td>{services.work}</td>
+            <td className="w-25">{services.description}</td>
+                    <td className="td-actions ">
+                
+            
                 <select defaultValue={services.status} onChange={(event)=>handleChange(event,services._id)}>
                     <option >Pending</option>
                     <option >On Going</option>

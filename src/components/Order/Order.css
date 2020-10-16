@@ -77,9 +77,15 @@ input[type=number] {
         position: absolute;
         top: 300px;
     }
-    .main {
-     
-        margin-top: 50px;
+    .detail{
+        width: 85%!important
+    }
+ 
+    input#name,input#email,input#work,textarea#textarea,input#price{
+        width: 100%;
+    }
+    .pricendfile{
+        display: block!important;
     }
     .side_bar {
         width: 300px!important;
@@ -96,9 +102,9 @@ input[type=number] {
     input.btn.btn-outline-success {
         width: 250px;
     }
-    .d-flex {
-        
-        display: block!important;}
+        .d-flexs{
+            display:flex;
+        }
         input.submit {
             width: 200px!important;
             bottom: -110px;
@@ -108,4 +114,13 @@ input[type=number] {
         button.btn.mlbtn {
             margin-left: 110px;
         }
+}
+@media (max-width: 800px){
+    .detail{
+        width: 80%!important
+    }
+ 
+    input#name,input#email,input#work,textarea#textarea,input#price{
+        width: 90%;
+    }
 }

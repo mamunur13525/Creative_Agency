@@ -9,10 +9,11 @@ import AllServices from './AllServices';
 
 
 const ServicesAdmin = () => {
+    const  spinner = 'https://miro.medium.com/max/1600/1*CsJ05WEGfunYMLGfsT2sXA.gif';
 
 const [allservices, setAllservices] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/admin/allservices')
+        fetch('https://tranquil-scrubland-64359.herokuapp.com/admin/allservices')
         .then(res => res.json())
         .then(result => setAllservices(result))
     },[])
@@ -50,6 +51,9 @@ const [allservices, setAllservices] = useState([]);
                                     </thead>
                                     
                                     <tbody>
+                                    {
+                                        allservices.length === 0 && <div className='img ml-5' > <img className="img-fluid" src={spinner}  alt="spinner"/> <h5 className="text-center">Loding</h5></div>
+                                    }
                                       {
                                           allservices.map(services => <AllServices key={services._id} services={services}></AllServices>)
                                       }

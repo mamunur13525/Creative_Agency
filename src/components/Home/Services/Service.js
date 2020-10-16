@@ -11,7 +11,7 @@ const Service = ({service}) => {
         const handleClick = ()=>{
             const id = service._id;
             
-            setContent({img:`http://localhost:5000/${service.fileName}`,...service})
+            setContent({img:`https://tranquil-scrubland-64359.herokuapp.com/${service.fileName}`,...service})
           
            setLoggedIn({...loggedIn,id:id})
         }
@@ -26,7 +26,7 @@ const Service = ({service}) => {
             <Link to='/order'>
                 <div onClick={handleClick} className="boxx ">
                     <div className="opacity">
-                    <img className='icon' src={service.img ||`http://localhost:5000/${service.fileName}`} alt="logo"/>
+                    <img className='icon' src={service.img ||`https://tranquil-scrubland-64359.herokuapp.com/${service.fileName}`} alt="logo"/>
                    <h4>{service.title}</h4>
                     <p className="text-secondary">{service.description}</p>
                         </div>
