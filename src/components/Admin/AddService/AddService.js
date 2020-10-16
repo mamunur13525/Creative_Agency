@@ -52,8 +52,6 @@ const Addservice = () => {
   }
    
 
-console.log(loggedIn)
-
     return (
         <div style={{background:'yellow'}}>
         <header className="header d-flex">

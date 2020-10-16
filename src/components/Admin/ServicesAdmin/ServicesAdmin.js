@@ -51,12 +51,12 @@ const [allservices, setAllservices] = useState([]);
                                     </thead>
                                     
                                     <tbody>
-                                    {
-                                        allservices.length === 0 && <div className='img ml-5' > <img className="img-fluid" src={spinner}  alt="spinner"/> <h5 className="text-center">Loding</h5></div>
-                                    }
-                                      {
-                                          allservices.map(services => <AllServices key={services._id} services={services}></AllServices>)
-                                      }
+                                        {
+                                            allservices.length === 0 && <div className='img ml-5' > <img className="img-fluid" src={spinner}  alt="spinner"/> <h5 className="text-center">Loding</h5></div>
+                                        }
+                                        {
+                                            allservices.map(services => <AllServices key={services._id} services={services}></AllServices>)
+                                        }
                                         
                                     </tbody>
                                     

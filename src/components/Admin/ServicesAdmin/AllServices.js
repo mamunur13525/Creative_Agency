@@ -8,20 +8,14 @@ const AllServices = ({services}) => {
 
     const handleChange =(event,serviceid) => {
         const status = {status:`${event.target.value}`};
-     console.log(serviceid)
+
        
             fetch(`https://tranquil-scrubland-64359.herokuapp.com/id?id=${serviceid}`,{
                 method:'PATCH',
                 headers: { 'content-type':'application/json'},
                 body:JSON.stringify(status)
-            })
-    
-  
+            })  
     }
-
-  
-console.log(services)
-
     return (
         <tr>                            
             <td>{services.name}</td>

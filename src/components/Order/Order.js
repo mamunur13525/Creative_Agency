@@ -27,13 +27,14 @@ const Order = () => {
     const { register, handleSubmit} = useForm();
     const onSubmit = data => {
             data.status = "pending";
-            console.log(data)
             const {img} = content;
-            const newDate = {...data,img}
+            const defaultImgLink = "https://i.ibb.co/3pLfQSf/service3.png";
+            const image = img||defaultImgLink;
+            const newData = {...data,image}
         fetch('https://tranquil-scrubland-64359.herokuapp.com/ordered',{
             method:'POST',
             headers:{'content-type':'application/json'},
-            body: JSON.stringify(newDate)
+            body: JSON.stringify(newData)
         })
         .then(res => res.json())
         .then(result => {
@@ -41,14 +42,7 @@ const Order = () => {
             history.replace('/servicelist')
                  }
         })
-        
-    
     };
-
-
-console.log(content)
-
-
 
     return (
         <div style={{background:'yellow'}}>
@@ -70,8 +64,8 @@ console.log(content)
                       <div className="detail w-50">
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <input ref={register} placeholder="Your name/ company's name" defaultValue={service.displayName} type="text" name="name" id="name"/>
-                                <input ref={register} placeholder="Your email address" defaultValue={service.email} type="text" name="email" id="email"/>
-                                <input ref={register} placeholder="Your Order" type="text" value={service.title} name="work" id="work"/>
+                                <input ref={register} placeholder="Your email address" value={loggedIn.email} type="text" name="email" id="email"/>
+                                <input ref={register} placeholder="Your Order" type="text" value={service.title||"Web Development"} name="work" id="work"/>
                             <textarea ref={register} className="form-control" placeholder="Products Details" name="description" id="textarea"  rows="4" required></textarea>
                                 <div className="d-flex pricendfile">
                                     <input  placeholder="Price" type="number"  min="0" name="price" id='price' required/>

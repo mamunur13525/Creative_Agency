@@ -15,7 +15,7 @@ const Services = () => {
     },[])
     
     const handleCLick =(e)=>{
-        console.log(e.target)
+       
     }
   
     return (

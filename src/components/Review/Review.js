@@ -15,7 +15,7 @@ import { UserContext } from '../../App';
 const Review = () => {
 
     const [loggedIn, setLoggedIn] = useContext(UserContext)
-console.log(loggedIn)
+
     const { register, handleSubmit} = useForm();
     const onSubmit = data => {
         data.img = loggedIn.photoURL;

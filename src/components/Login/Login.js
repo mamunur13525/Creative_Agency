@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import mainLogo from '../../images/logos/logo.png';
 import './Login.css';
 import google_img from '../../images/google_logo.png';
@@ -19,6 +19,7 @@ const Login = () => {
     let location = useLocation();
 
     const [loggedIn, setLoggedIn] =useContext(UserContext);
+    const [error, setError] = useState();
     let { from } = location.state || { from: { pathname: "/" } };
     
     const googleSingUp = () => {
@@ -33,18 +34,19 @@ const Login = () => {
             }
           }).catch(function(error) {
             // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
+            const errorCode = error.code;
+            const errorMessage = error.message;
+           
             // The email of the user's account used.
-            var email = error.email;
+            const email = error.email;
             // The firebase.auth.AuthCredential type that was used.
-        
+            setError(errorMessage)
           });
 
 
     }
 
-
+ console.log(error)
 
     return (
         <div className="text-center">
@@ -55,7 +57,9 @@ const Login = () => {
                         <img className="google_logo" src={google_img} alt=""/>
                         <span>Continue With Google</span>
                     </div>
-                   <p onClick={googleSingUp} className="create_account">Don't have an account?<span style={{color:'blue',cursor:'pointer', textDecoration:"underline"}}>Create an account</span></p> 
+                    {
+                      error&&  <p style={{color:'red',fontSize:'13'}}>{error}</p>
+                   }                   <p onClick={googleSingUp} className="create_account">Don't have an account?<span style={{color:'blue',cursor:'pointer', textDecoration:"underline"}}>Create an account</span></p> 
                 </div>
         </div>
     );
