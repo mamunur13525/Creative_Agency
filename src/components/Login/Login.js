@@ -46,8 +46,6 @@ const Login = () => {
 
     }
 
- console.log(error)
-
     return (
         <div className="text-center">
                 <img className="mainLogo" src={mainLogo} alt=""/>

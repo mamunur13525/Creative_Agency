@@ -4,7 +4,7 @@
 }
 .loginBox{
     border: 1px solid rgb(133 132 132 / 17%);
-    width: 500px;
+    width: 34%;
     margin: 20px auto 0px;
     padding: 150px 45px;
     border-radius: 5px;
@@ -37,4 +37,35 @@
 }
 .create_account{
     margin-top: 10px;
+}
+
+@media (max-width:1200px){
+    .loginBox{
+        width:40%;
+    }
+}
+@media (max-width:980px){
+    .loginBox{
+        width:50%;
+    }
+}
+@media (max-width:800px){
+    .loginBox{
+        width:60%;
+    }
+}
+@media (max-width:650px){
+    .loginBox{
+        width:80%;
+    }
+}
+@media (max-width:550px){
+    .loginBox{
+        width:80%;
+    }
+}
+@media (max-width:400px){
+    .loginBox{
+        width:85%;
+    }
 }

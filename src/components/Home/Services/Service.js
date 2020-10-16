@@ -23,10 +23,10 @@ const Service = ({service}) => {
     return (
         <div className="col-md-6 col-lg-4 col-sm-12">
                                 
-            <Link to='/order'>
+            <Link className="text-decoration-none" to='/order'>
                 <div onClick={handleClick} className="boxx ">
                     <div className="opacity">
-                    <img className='icon' src={service.img ||`https://tranquil-scrubland-64359.herokuapp.com/${service.fileName}`} alt="logo"/>
+                    <div className="icon"><img className='img-fluid' src={service.img ||`https://tranquil-scrubland-64359.herokuapp.com/${service.fileName}`} alt="logo"/></div>
                    <h4>{service.title}</h4>
                     <p className="text-secondary">{service.description}</p>
                         </div>
