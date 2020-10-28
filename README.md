@@ -1,7 +1,7 @@
 
 # [ Creative Agency ](https://creative-agency-8d8f6.web.app/)
 
-![alt text](https://i.ibb.co/LC2yj9Y/Creative-agency-1.png)
+![alt text](https://i.ibb.co/gjCpvyd/Creative-agency2.png)
 
 ### Project Description
 *	A Full-stack Service Selling Web Application.
