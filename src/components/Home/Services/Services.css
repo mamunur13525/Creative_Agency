@@ -37,11 +37,17 @@ Link{
     text-decoration: none;
 }
 
-.img{
-    width:300px;
-    margin:auto;
+.img {
+    width: 50px;
+    margin: auto;
     margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
-img.h5{
+
+.img h5{
+    margin-top: 1rem;
     font-size: 30px;
 }

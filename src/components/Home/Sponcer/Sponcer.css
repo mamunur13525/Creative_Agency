@@ -1,5 +1,9 @@
-.sponcer{
-    width:120px;
-    margin:20px;
-    
+.sponcer {
+  width: 120px;
+  margin: 20px;
+}
+
+.sponcer:hover {
+  cursor: pointer;
+  filter: brightness(3.5) contrast(3.5) saturate(11.5);
 }

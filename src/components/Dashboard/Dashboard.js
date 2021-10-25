@@ -9,13 +9,12 @@ const Dashboard = () => {
     const [varify, setVarify] = useState()
 
     useEffect(()=>{
-
-        fetch(`https://tranquil-scrubland-64359.herokuapp.com/getAdmin?email=${loggedIn.email}`)
-        .then(res => res.json())
-        .then(result => {
-            setVarify(result)
+        // fetch(`http://localhost:5000/getAdmin?email=${loggedIn.email}`)
+        // .then(res => res.json())
+        // .then(result => {
+        //     setVarify(result)
           
-        })
+        // })
 
     },[])
     console.log(varify)

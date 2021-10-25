@@ -28,6 +28,9 @@
     width:100%;
     margin:20px 20px 0px 0px;
     background-color: #F4F7FC;
+    display: flex;
+    justify-content: center;
+    padding-top: 3rem;
 }
 .detail form input, .detail form textarea{
     width:90%;

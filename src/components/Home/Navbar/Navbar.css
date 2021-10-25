@@ -1,6 +1,6 @@
-*{
-    margin:0px;
-    padding:0px;
+.nav-link{
+    padding: 0!important;
+    width: fit-content;
 }
 .actives::after{
    background-color: green;
@@ -9,6 +9,9 @@
    height:4px;
    width:45px;
    position: absolute;
+}
+.nav-link:hover{
+    border-bottom: 4px solid green;
 }
 .logo{
     width:140px;

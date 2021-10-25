@@ -1,75 +1,59 @@
-import React, { useContext, useEffect, useState } from 'react';
-import '../Order/Order.css';
-import './Servicelist.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faServer, faShoppingCart, faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import webdesign from '../../images/icons/service1.png';
-import Graphich from '../../images/icons/service2.png';
-import { Link } from 'react-router-dom';
-import { ContentContext, UserContext } from '../../App';
-import Servicess from './Service';
-import logo from '../../images/logos/logo.png';
-
-
-
-
+import React, { useEffect, useState } from "react";
+import "../Order/Order.css";
+import "./Servicelist.css";
+import Servicess from "./Service";
+import spinner from "../../images/icons/spinner.gif";
+import AdminSidebar from "../Shared/AdminSidebar";
+import useLocalStorage from "../../Service/useLocalStorage";
 const Servicelist = () => {
+  const trash =
+    "https://i.ibb.co/hD6ZzGj/121473614-1498812373641223-8720674945442455752-n.png";
+  const [loggedInUser] = useLocalStorage("userInfo", {});
+  const [services, setServices] = useState([]);
+  const [spindata, setSpindata] = useState(null);
+  const [emty, setEmty] = useState([{ hello: "nothing" }]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/servicelist?email=${loggedInUser.email}`)
+      .then((res) => res.json())
+      .then((result) => {
+        setServices(result);
+        setSpindata(result);
+        setEmty(result);
+      });
+  }, []);
 
-  const  spinner = 'https://miro.medium.com/max/1600/1*CsJ05WEGfunYMLGfsT2sXA.gif';
-  const trash = 'https://i.ibb.co/hD6ZzGj/121473614-1498812373641223-8720674945442455752-n.png';
-  const [loggedIn, setLoggedIn] = useContext(UserContext)
-  const [services , setServices] = useState([]);
-  const [spindata, setSpindata] = useState(null)
-  const [emty, setEmty] = useState([{hello:'nothing'}])
-    useEffect(()=>{
+  return (
+    <div style={{ background: "yellow" }}>
+      <header className="header d-flex">
+        <AdminSidebar />
+        <div className="main">
+          <h4>Service List</h4>
+          <div className="formbox">
+            <div className="detail row flex-column align-items-center">
+              {spindata === null && (
+                <div className="img">
+                  {" "}
+                  <img className="img-fluid" src={spinner} alt="spinner" />{" "}
+                  <h5 className="text-center">Loding</h5>
+                </div>
+              )}
 
-        fetch(`https://tranquil-scrubland-64359.herokuapp.com/servicelist?email=${loggedIn.email}`)
-        .then(res => res.json())
-        .then(result => {
-          setServices(result)
-          setSpindata(result)
-          setEmty(result)
-        })
+              {emty.length === 0 && (
+                <>
+                  <img src={trash} alt="trash" />
+                  <h4 className="text-center">Emty Data</h4>
+                </>
+              )}
 
-    },[])
-  console.log(emty)
-
-    return (
-        <div style={{background:'yellow'}}>
-            <header className="header d-flex">
-          
-                   <div className="side_bar w-25">
-                        <Link className="hover" to="/"> <img className="logo" src={logo} alt="logo"/></Link>
-
-                        <div className="mt-5 font-weight-bold">
-                        <Link className="hover" to="/order">   <div className="d-flex " ><FontAwesomeIcon className="m-2" icon={faShoppingCart} /><p className="hover">Order</p></div>   </Link>
-                            <div className="d-flex  my-3" style={{color:'#30D4C7'}}><FontAwesomeIcon className="m-2" icon={faServer} />  <p className="hover">Service list</p></div>  
-                          <Link className="hover" to="/review"> <div className="d-flex "><FontAwesomeIcon className="m-2" icon={faEnvelope} /> <p className="hover">Review</p></div>  </Link> 
-                        </div> 
-                  </div>
-                <div className="main">
-                      <h4>Service List</h4>
-                      <div className="formbox">
-                        <div className="detail row">
-                              {
-                              spindata === null && <div className='img'> <img className="img-fluid" src={spinner}  alt="spinner"/> <h5 className="text-center">Loding</h5></div>
-                              }
-                          
-                              {
-                              emty.length === 0 && <div><img src={trash} alt="trash"/><h4 className="text-center">Emty Data</h4></div>
-                              }
-                          
-                              {
-                                services.map(service => <Servicess key={service._id} servicess={service}></Servicess>)
-                              }
-                        
-                        </div>
-                      </div>
-               </div>
-               
-            </header>
+              {services.map((service) => (
+                <Servicess key={service._id} servicess={service}></Servicess>
+              ))}
+            </div>
+          </div>
         </div>
-    );
+      </header>
+    </div>
+  );
 };
 
 export default Servicelist;
