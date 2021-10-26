@@ -4,6 +4,7 @@ import useLocalStorage from "../../Service/useLocalStorage";
 
 const PrivateRoute = ({ children, ...rest }) => {
   const [loggedInUser] = useLocalStorage("userInfo", {});
+
   return (
     <Route
       {...rest}

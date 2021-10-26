@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import logo from "../../../images/logos/logo.png";
 import "./Navbar.css";
 import useLocalStorage from "../../../Service/useLocalStorage";
+import "react-dropdown/style.css";
+import { createNotification } from "../../Shared/Notify";
 
 const Navbar = () => {
   const style = {
@@ -12,12 +14,13 @@ const Navbar = () => {
 
   const logOut = () => {
     setLoggedInUser({});
+    createNotification("success", "Successfully", "Log out!");
   };
+
   return (
     <div style={style} className="container">
       <nav className="navbar navbar-expand-lg navbar-light">
         <img className="img-fluid logo" src={logo} alt="logo" />
-
         <button
           className="navbar-toggler"
           type="button"
@@ -50,31 +53,39 @@ const Navbar = () => {
             </li>
             <li>
               {loggedInUser.email ? (
-                <div>
-                  <img
-                    className="profile"
-                    src={loggedInUser.photoURL}
-                    alt="profile_photo"
-                  />
-                  <p style={{ display: "inline" }}>
-                    {loggedInUser.displayName}
-                  </p>
+                <div className="dropdown">
+                  <div
+                    type="button"
+                    id="dropdownMenu2"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <img
+                      className="profile"
+                      src={loggedInUser.photoURL}
+                      alt="profile_photo"
+                    />
+                    <p className="d-inline ml-2">{loggedInUser.displayName}</p>
+                  </div>
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="dropdownMenu2"
+                  >
+                    <button
+                      onClick={logOut}
+                      className="py-1 px-2 font-weight-bold dropdown-item"
+                      type="button"
+                    >
+                      Log Out
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <Link to="/login">
                   {" "}
                   <button className="btn  btn-dark btn_custom">Login</button>
                 </Link>
-              )}
-            </li>
-            <li>
-              {loggedInUser.email && (
-                <button
-                  onClick={logOut}
-                  className="btn btn-dark py-1 px-2 text-white"
-                >
-                  Log Out
-                </button>
               )}
             </li>
           </ul>

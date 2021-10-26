@@ -22,17 +22,16 @@ const MakeAdmin = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(admin);
-    // fetch("http://localhost:5000/adminlogin", {
-    //   method: "POST",
-    //   headers: { "content-type": "application/json" },
-    //   body: JSON.stringify(admin),
-    // })
-    //   .then((res) => res.json())
-    //   .then((result) => {
-    //     alert("Admin Make Succesfully");
-    //   });
-
-    e.preventDefault();
+    fetch("http://localhost:5000/adminlogin", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(admin),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        alert("Admin Make Succesfully");
+      }).catch(err => console.log(err))
+    
   };
 
   return (

@@ -5,6 +5,7 @@ import google_img from "../../images/google_logo.png";
 import firebaseConfig from "./firebaseConfig";
 import { useHistory, useLocation } from "react-router-dom";
 import useLocalStorage from "../../Service/useLocalStorage";
+import { createNotification } from "../Shared/Notify";
 
 require("firebase/auth");
 const firebase = require("firebase/app");
@@ -32,12 +33,14 @@ const Login = () => {
         setLoggedInUser({ ...loggedInUser, displayName, photoURL, email });
         if (result.user.email) {
           history.replace(from);
+          createNotification('success','Successfully','Login❤')
         }
       })
       .catch(function (error) {
         // Handle Errors here.
         // const errorCode = error.code;
         const errorMessage = error.message;
+        createNotification('error',errorMessage)
 
         // The email of the user's account used.
         // const email = error.email;

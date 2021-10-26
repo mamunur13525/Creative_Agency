@@ -1,35 +1,19 @@
-import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { ContentContext, UserContext } from '../../../App'
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Service = ({ service }) => {
-  const [loggedIn, setLoggedIn] = useContext(UserContext)
-  const [content, setContent] = useContext(ContentContext)
-  const [user, setUser] = useState({})
-
-  const handleClick = () => {
-    const id = service._id
-
-    setContent({
-      img: `http://localhost:5000/${service.fileName}`,
-      ...service,
-    })
-
-    setLoggedIn({ ...loggedIn, id: id })
-  }
-
   return (
-    <div className="col-md-6 col-lg-4 col-sm-12">
-      <Link className="text-decoration-none" to="/order">
-        <div onClick={handleClick} className="boxx ">
+    <div className="col-md-6 col-lg-4 col-sm-12 ">
+      <Link
+        className="text-decoration-none"
+        to={{ pathname: "/order", state: { serviceName: service.title } }}
+      >
+        <div className="boxx border rounded">
           <div className="opacity">
             <div className="icon">
               <img
                 className="img-fluid"
-                src={
-                  service.img ||
-                  `http://localhost:5000/${service.fileName}`
-                }
+                src={service.img || `http://localhost:5000/${service.fileName}`}
                 alt="logo"
               />
             </div>
@@ -39,7 +23,7 @@ const Service = ({ service }) => {
         </div>
       </Link>
     </div>
-  )
-}
+  );
+};
 
-export default Service
+export default Service;

@@ -11,16 +11,17 @@ import ServicesAdmin from "./components/Admin/ServicesAdmin/ServicesAdmin";
 import Addservice from "./components/Admin/AddService/AddService";
 import MakeAdmin from "./components/Admin/MakeAdmin/MakeAdmin";
 import Dashboard from "./components/Dashboard/Dashboard";
-
-export const UserContext = createContext();
+import { NotificationContainer } from "react-notifications";
+import "react-notifications/lib/notifications.css";
+export const ChangeFindContext = createContext();
 export const ContentContext = createContext();
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState([]);
+  const [changeFetch, setChangeFetch] = useState({clientReview:false});
   const [content, setContent] = useState([]);
 
   return (
-    <UserContext.Provider value={[loggedIn, setLoggedIn]}>
+    <ChangeFindContext.Provider value={[changeFetch, setChangeFetch]}>
       <ContentContext.Provider value={[content, setContent]}>
         <Router>
           <Switch>
@@ -60,7 +61,8 @@ function App() {
           </Switch>
         </Router>
       </ContentContext.Provider>
-    </UserContext.Provider>
+      <NotificationContainer />
+    </ChangeFindContext.Provider>
   );
 }
 

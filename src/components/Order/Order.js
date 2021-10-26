@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import "./Order.css";
-import {  useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { ContentContext } from "../../App";
 import AdminSidebar from "../Shared/AdminSidebar";
 import useLocalStorage from "../../Service/useLocalStorage";
@@ -11,12 +11,13 @@ const Order = () => {
   const [content] = useContext(ContentContext);
   const [service, setService] = useState([]);
   useEffect(() => {
-    // fetch(`http://localhost:5000/id?id=${loggedInUser.id}`)
-    // .then(res => res.json())
-    // .then(data => {
-    //     const {title, description,img} = data;
-    //     setService({...loggedInUser,title, description,img})
-    // })
+    fetch(`http://localhost:5000/id?id=${loggedInUser.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const { title, description, img } = data;
+        setService({ ...loggedInUser, title, description, img });
+      });
   }, []);
 
   const history = useHistory();

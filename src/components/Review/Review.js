@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { ChangeFindContext } from "../../App";
 import useLocalStorage from "../../Service/useLocalStorage";
 import AdminSidebar from "../Shared/AdminSidebar";
+import { createNotification } from "../Shared/Notify";
+import Table from "./Table";
 
 const Review = () => {
   const [loggedInUser] = useLocalStorage("userInfo", {});
   const { register, handleSubmit } = useForm();
+  const [changeFetch, setChangeFetch] = useContext(ChangeFindContext);
+  const [clientsReview, setClientReview] = useState({
+    status: "not_fetch",
+    resultArr: [],
+  });
+  //Review Data from Client
+  useEffect(() => {
+    fetch("http://localhost:5000/clientFeedback")
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        setClientReview({ status: "fetch", resultArr: result });
+      });
+  }, [changeFetch.clientReview]);
+  //Create a New Review from a client.
   const onSubmit = (data) => {
     data.img = loggedInUser.photoURL;
     fetch("http://localhost:5000/client", {
@@ -14,7 +32,13 @@ const Review = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((result) => alert("Thanks For Your Review??"));
+      .then((result) => {
+        setChangeFetch({
+          ...changeFetch,
+          clientReview: !changeFetch.clientReview,
+        });
+        createNotification("success", "Thanks For Your Review??");
+      });
   };
 
   return (
@@ -59,6 +83,9 @@ const Review = () => {
                     id=""
                   />
                 </form>
+              </div>
+              <div className="text-center p-3">
+                {clientsReview && <Table clientsReview={clientsReview} />}
               </div>
             </div>
           </div>

@@ -16,3 +16,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+h2.headingTwo::after {
+  content: "";
+  height: 3px;
+  width: 100px;
+  background: #7ab259;
+  display: block;
+  text-align: center;
+  margin: auto;
+  margin-top: 0.8rem;
+}

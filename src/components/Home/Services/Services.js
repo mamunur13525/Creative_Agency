@@ -21,7 +21,7 @@ const Services = () => {
         }
       });
   }, []);
-  console.log(services);
+  console.log({services});
   const handleCLick = (e) => {};
 
   return (

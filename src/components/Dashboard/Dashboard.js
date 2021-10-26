@@ -1,31 +1,21 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../App';
-import ServicesAdmin from '../Admin/ServicesAdmin/ServicesAdmin';
-import Order from '../Order/Order';
+import React, {  useEffect, useState } from "react";
 
+import ServicesAdmin from "../Admin/ServicesAdmin/ServicesAdmin";
+import Order from "../Order/Order";
 
 const Dashboard = () => {
-    const [loggedIn, setLoggedIn] = useContext(UserContext)
-    const [varify, setVarify] = useState()
+  const [varify, setVarify] = useState();
 
-    useEffect(()=>{
-        // fetch(`http://localhost:5000/getAdmin?email=${loggedIn.email}`)
-        // .then(res => res.json())
-        // .then(result => {
-        //     setVarify(result)
-          
-        // })
+  useEffect(() => {
+    // fetch(`http://localhost:5000/getAdmin?email=${loggedIn.email}`)
+    // .then(res => res.json())
+    // .then(result => {
+    //     setVarify(result)
+    // })
+  }, []);
+  console.log(varify);
 
-    },[])
-    console.log(varify)
-
-    return (
-        <>
-           {
-               varify?  <ServicesAdmin></ServicesAdmin>   :  <Order></Order>
-           }
-        </>
-    );
+  return <>{varify ? <ServicesAdmin></ServicesAdmin> : <Order></Order>}</>;
 };
 
 export default Dashboard;

@@ -15,9 +15,9 @@ import spinner from "../../../images/icons/spinner.gif";
 const ServicesAdmin = () => {
   const [allservices, setAllservices] = useState([]);
   useEffect(() => {
-    // fetch('http://localhost:5000/admin/allservices')
-    // .then(res => res.json())
-    // .then(result => setAllservices(result))
+    fetch('http://localhost:5000/admin/allservices')
+    .then(res => res.json())
+    .then(result => setAllservices(result))
   }, []);
 
   return (

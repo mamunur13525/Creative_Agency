@@ -62,9 +62,12 @@ const ClientFeedBack = () => {
   });
 
   useEffect(() => {
-    fetch('http://localhost:5000/clientFeedback')
-    .then(res => res.json())
-    .then(result => setClients({ status: "fetch", resultArr: result }))
+    fetch("http://localhost:5000/clientFeedback")
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        setClients({ status: "fetch", resultArr: result });
+      });
   }, []);
 
   return (
@@ -74,7 +77,7 @@ const ClientFeedBack = () => {
           Clients <span style={{ color: "green" }}>FeedBack</span>
         </h2>
         <div className="container">
-          <div className='text-center'>
+          <div className="text-center">
             {clients.status === "not_fetch" && (
               <div className="img text-muted">
                 <img className="img-fluid" src={spinner} alt="spinner" />
@@ -88,11 +91,20 @@ const ClientFeedBack = () => {
                   <h5>No Data Found!</h5>
                 </div>
               )}
-            <Slider className="row" {...settings}>
-              {clients && clients.resultArr.map((client) => (
-                <Client key={client._id} client={client} />
-              ))}
-            </Slider>
+
+            {clients && clients.resultArr.length > 3 ? (
+              <Slider className="row" {...settings}>
+                {clients.resultArr.map((client) => (
+                  <Client slider={true} key={client._id} client={client} />
+                ))}
+              </Slider>
+            ) : (
+              <div className="row">
+                {clients.resultArr.map((client) => (
+                  <Client slider={false} key={client._id} client={client} />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
