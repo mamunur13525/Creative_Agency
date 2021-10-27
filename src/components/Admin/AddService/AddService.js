@@ -1,22 +1,18 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
 import "../../Admin/ServicesAdmin/ServicesAdmin.css";
 import "../../Servicelist/Servicelist.css";
-import logo from "../../../images/logos/logo.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faServer,
-  faShoppingCart,
-  faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
 import "./AddService.css";
 import useLocalStorage from "../../../Service/useLocalStorage";
-
+import AdminSidebar from "../../Shared/AdminSidebar";
+import AdminServicesList from "./AdminServicesList";
+import { ChangeFindContext } from "../../../App";
+import { createNotification } from "../../Shared/Notify";
+import NotFound from "../../NotFound";
 const Addservice = () => {
   const [file, setFile] = useState(null);
   const [info, setInfo] = useState({});
   const [loggedInUser, setLoggedInUser] = useLocalStorage("userInfo");
-  console.log(loggedInUser);
+  const [changeFetch, setChangeFetch] = useContext(ChangeFindContext);
 
   const handleBlur = (e) => {
     const newTitle = { ...info };
@@ -43,52 +39,24 @@ const Addservice = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        alert("Service Added Sucessfully");
+        createNotification("success", "Sucessfully", "Service Added");
         setLoggedInUser({ ...loggedInUser, patch: data.path });
+        setChangeFetch({
+          ...changeFetch,
+          serviceList: !changeFetch.serviceList,
+        });
       })
       .catch((error) => {
         error(error);
       });
   };
 
-  return (
+  return !loggedInUser.admin ? (
+    <NotFound />
+  ) : (
     <div style={{ background: "yellow" }}>
       <header className="header d-flex">
-        <div className="side_bar w-25">
-          <Link className="hover" to="/">
-            {" "}
-            <img className="logo" src={logo} alt="logo" />
-          </Link>
-
-          <div className="mt-5 font-weight-bold">
-            <Link to="/admin/servicelist">
-              {" "}
-              <div className="d-flex  my-3">
-                <FontAwesomeIcon className="m-2" icon={faServer} />{" "}
-                <p className="hover">Service list</p>
-              </div>{" "}
-            </Link>
-
-            <Link
-              className="hover"
-              to="/admin/addservice"
-              style={{ color: "#30D4C7" }}
-            >
-              {" "}
-              <div className="d-flex ">
-                <FontAwesomeIcon className="m-2" icon={faShoppingCart} />
-                <p className="hover">Add Service</p>
-              </div>{" "}
-            </Link>
-            <Link className="hover" to="/admin/makeadmin">
-              {" "}
-              <div className="d-flex ">
-                <FontAwesomeIcon className="m-2" icon={faEnvelope} />{" "}
-                <p className="hover">Make Admin</p>
-              </div>{" "}
-            </Link>
-          </div>
-        </div>
+        <AdminSidebar />
         <div className="main">
           <h4>Add Service</h4>
           <div className="formbox">
@@ -97,7 +65,7 @@ const Addservice = () => {
                 <div className="d-flex threeBox">
                   <div className="boxss">
                     <div className=" first">
-                      <h5 className="ml-4 mt-4">services title</h5>
+                      <h5 className="ml-4 mt-4">Services title</h5>
                       <input
                         onBlur={handleBlur}
                         placeholder="Enter Title"
@@ -124,7 +92,7 @@ const Addservice = () => {
                     <h5 className="ml-4">Icon</h5>
                     <input
                       onChange={handleFileChange}
-                      className="btn w-25 btn-outline-success"
+                      className="btn btn-outline-success"
                       type="file"
                       name="file"
                       id=""
@@ -138,6 +106,9 @@ const Addservice = () => {
                   value="Submit"
                 />
               </form>
+            </div>
+            <div className="m-3">
+              <AdminServicesList />
             </div>
           </div>
         </div>

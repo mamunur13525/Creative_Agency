@@ -5,7 +5,7 @@ import Servicess from "./Service";
 import spinner from "../../images/icons/spinner.gif";
 import AdminSidebar from "../Shared/AdminSidebar";
 import useLocalStorage from "../../Service/useLocalStorage";
-
+import NotFound from "../NotFound";
 const Servicelist = () => {
   const trash =
     "https://i.ibb.co/hD6ZzGj/121473614-1498812373641223-8720674945442455752-n.png";
@@ -14,7 +14,7 @@ const Servicelist = () => {
     status: "not_fetch",
     resultArr: [],
   });
-  //Fetch Data 
+  //Fetch Data
   useEffect(() => {
     fetch(`http://localhost:5000/servicelist?email=${loggedInUser.email}`)
       .then((res) => res.json())
@@ -23,14 +23,16 @@ const Servicelist = () => {
       });
   }, []);
 
-  return (
+  return loggedInUser.admin ? (
+    <NotFound />
+  ) : (
     <div style={{ background: "yellow" }}>
       <header className="header d-flex">
         <AdminSidebar />
         <div className="main">
           <h4>Service List</h4>
           <div className="formbox">
-            <div className="detail row align-items-center">
+            <div className="detail row align-items-center justify-content-start pt-0">
               {services.status === "not_fetch" && (
                 <div className="img">
                   {" "}

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { ContentContext } from "../../App";
 import AdminSidebar from "../Shared/AdminSidebar";
 import useLocalStorage from "../../Service/useLocalStorage";
-
+import NotFound from "../NotFound";
 const Order = () => {
   const [loggedInUser] = useLocalStorage("userInfo", {});
   const [content] = useContext(ContentContext);
@@ -44,7 +44,9 @@ const Order = () => {
       });
   };
 
-  return (
+  return loggedInUser.admin === true ? (
+    <NotFound />
+  ) : (
     <div style={{ background: "yellow" }}>
       <header className="header d-flex">
         <AdminSidebar />

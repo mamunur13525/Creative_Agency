@@ -4,8 +4,7 @@ import { ChangeFindContext } from "../../App";
 import useLocalStorage from "../../Service/useLocalStorage";
 import AdminSidebar from "../Shared/AdminSidebar";
 import { createNotification } from "../Shared/Notify";
-import Table from "./Table";
-
+import NotFound from '../NotFound'
 const Review = () => {
   const [loggedInUser] = useLocalStorage("userInfo", {});
   const { register, handleSubmit } = useForm();
@@ -16,6 +15,7 @@ const Review = () => {
   });
   //Review Data from Client
   useEffect(() => {
+    setClientReview({ status: "not_fetch", resultArr: [] });
     fetch("http://localhost:5000/clientFeedback")
       .then((res) => res.json())
       .then((result) => {
@@ -41,7 +41,9 @@ const Review = () => {
       });
   };
 
-  return (
+  return loggedInUser.admin ? (
+    <NotFound />
+  ) : (
     <>
       <div style={{ background: "yellow" }}>
         <header className="header d-flex">
@@ -79,13 +81,9 @@ const Review = () => {
                   <input
                     className="btn w-25 btnSubmit btn-dark btn_custom"
                     type="submit"
-                    name=""
-                    id=""
+                    value="Submit"
                   />
                 </form>
-              </div>
-              <div className="text-center p-3">
-                {clientsReview && <Table clientsReview={clientsReview} />}
               </div>
             </div>
           </div>

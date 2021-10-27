@@ -1,93 +1,75 @@
-import React, {  useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import "./ServicesAdmin.css";
 import "../../Servicelist/Servicelist.css";
-import logo from "../../../images/logos/logo.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faServer,
-  faShoppingCart,
-  faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
 import AllServices from "./AllServices";
 import spinner from "../../../images/icons/spinner.gif";
+import AdminSidebar from "../../Shared/AdminSidebar";
+import { FaDatabase } from "react-icons/fa";
+import NotFound from "../../NotFound";
+import useLocalStorage from "../../../Service/useLocalStorage";
+
+const fileIconSize = {
+  fontSize: "2.4rem",
+};
 
 const ServicesAdmin = () => {
-  const [allservices, setAllservices] = useState([]);
+  const [loggedInUser] = useLocalStorage("userInfo");
+  const [allservices, setAllservices] = useState({
+    status: "not_fetch",
+    resultArr: [],
+  });
   useEffect(() => {
-    fetch('http://localhost:5000/admin/allservices')
-    .then(res => res.json())
-    .then(result => setAllservices(result))
+    fetch("http://localhost:5000/admin/allservices")
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        setAllservices({ status: "fetch", resultArr: result });
+      });
   }, []);
 
-  return (
+  return !loggedInUser.admin ? (
+    <NotFound />
+  ) : (
     <div style={{ background: "yellow" }}>
       <header className="header d-flex">
-        <div className="side_bar w-25">
-          <Link className="hover" to="/">
-            {" "}
-            <img className="logo" src={logo} alt="logo" />
-          </Link>
-
-          <div className="mt-5 font-weight-bold">
-            <div className="d-flex  my-3" style={{ color: "#30D4C7" }}>
-              <FontAwesomeIcon className="m-2" icon={faServer} />{" "}
-              <p className="hover">Service list</p>
-            </div>
-
-            <Link className="hover" to="/admin/addservice">
-              {" "}
-              <div className="d-flex ">
-                <FontAwesomeIcon className="m-2" icon={faShoppingCart} />
-                <p className="hover">Add Service</p>
-              </div>{" "}
-            </Link>
-            <Link className="hover" to="/admin/makeadmin">
-              {" "}
-              <div className="d-flex ">
-                <FontAwesomeIcon className="m-2" icon={faEnvelope} />{" "}
-                <p className="hover">Make Admin</p>
-              </div>{" "}
-            </Link>
-          </div>
-        </div>
+        <AdminSidebar />
         <div className="main">
-          <h4>Add Services</h4>
+          <h4>Order List</h4>
           <div className="formbox">
-            <div className="detail row">
+            <div className="detail row pt-0">
               <div className="outsideTable">
-                <div className="table-responsive">
-                  <table className="table text-center">
+                <div className="table-responsive my-0">
+                  <table className="table table-striped table-hover">
                     <thead>
                       <tr className="table-head-row">
+                        <th>No.</th>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>Service</th>
-                        <th>Project Details</th>
-                        <th>Status</th>
+                        <th>Work</th>
+                        <th>Description</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
 
                     <tbody>
-                      {allservices.length === 0 && (
-                        <div className="img ml-5">
-                          {" "}
-                          <img
-                            className="img-fluid"
-                            src={spinner}
-                            alt="spinner"
-                          />{" "}
-                          <h5 className="text-center">Loding</h5>
-                        </div>
-                      )}
-                      {allservices.map((services) => (
-                        <AllServices
-                          key={services._id}
-                          services={services}
-                        ></AllServices>
-                      ))}
+                      {allservices &&
+                        allservices.resultArr.map((services, ind) => (
+                          <AllServices key={services._id} services={services} />
+                        ))}
                     </tbody>
                   </table>
+                  {allservices.status === "not_fetch" && (
+                    <div className="img text-muted">
+                      <img className="img-fluid" src={spinner} alt="spinner" />
+                      <h5>Loding</h5>
+                    </div>
+                  )}
+                  {allservices.status === "fetch" &&
+                    JSON.stringify(allservices.resultArr) === "[]" && (
+                      <div className="m-auto text-muted">
+                        <FaDatabase style={fileIconSize} />
+                        <h5>No Data Found!</h5>
+                      </div>
+                    )}
                 </div>
               </div>
             </div>

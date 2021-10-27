@@ -1,59 +1,61 @@
-.header{
-    background: white;
-    width: 100%;
+.header {
+  background: white;
+  width: 100%;
 }
-#price{
-    margin-top: 10px;
+#price {
+  margin-top: 10px;
 }
 
-.btnSubmit{
-    padding:10px 25px!important;
+.btnSubmit {
+  padding: 10px 25px !important;
 }
-.side_bar{
-    width:200px;
-    padding-top:50px;
-    padding-left: 80px;
+.side_bar {
+  width: 200px;
+  padding-top: 50px;
+  padding-left: 80px;
 }
-.main{
-    width: 100%;
-    padding-top:50px;
+.main {
+  width: 100%;
+  padding-top: 50px;
 }
-.formbox{
-    width:100%;
-    height: auto;
-    background:#F4F7FC;
+.formbox {
+  width: 100%;
+  min-height: 87vh;
+  background: #f4f7fc;
+  height: auto;
 }
-.detail{
-    box-sizing: border-box;
-    width:100%;
-    margin:20px 20px 0px 0px;
-    background-color: #F4F7FC;
-    display: flex;
-    justify-content: center;
-    padding-top: 3rem;
+.detail {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 20px 20px 0px 0px;
+  background-color: #f4f7fc;
+  display: flex;
+  justify-content: center;
+
 }
-.detail form input, .detail form textarea{
-    width:90%;
-    margin:10px 20px ;
-    padding:15px;
-    border:none;
-    border-radius: 5px;
+.detail form input,
+.detail form textarea {
+  width: 90%;
+  margin: 10px 20px;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
 }
-.detail form input:focus, .detail form textarea:focus{
-    border:none;
-    outline:none;
+.detail form input:focus,
+.detail form textarea:focus {
+  border: none;
+  outline: none;
 }
-.detail form input:first-child{
-    margin-top: 20px;
+.detail form input:first-child {
+  margin-top: 20px;
 }
-.hover:hover{
-    cursor:pointer;
-    color:#6AD4C7;
-    text-decoration: none;
-    
+.hover:hover {
+  cursor: pointer;
+  color: #6ad4c7;
+  text-decoration: none;
 }
-input[type=file]{
-    border:1px solid #28a745!important;
+input[type="file"] {
+  border: 1px solid #28a745 !important;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -62,68 +64,76 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
-.hover:hover{
-    text-decoration: none;
+.hover:hover {
+  text-decoration: none;
 }
 
-@media (max-width: 1000px){
-    .main {
-        margin-left: 50px;
-    }
+@media (max-width: 1000px) {
+  .main {
+    margin-left: 50px;
+  }
 }
-@media (max-width: 800px){
-    .main {
-        margin-left: 30px;
-        position: absolute;
-        top: 300px;
-    }
-    .detail{
-        width: 85%!important
-    }
- 
-    input#name,input#email,input#work,textarea#textarea,input#price{
-        width: 100%;
-    }
-    .pricendfile{
-        display: block!important;
-    }
-    .side_bar {
-        width: 300px!important;
-        padding-top: 50px;
-        margin: auto;
-        padding-left: 80px;
-    }
-    input.btn.w-25.btnSubmit.btn-dark.btn_custom {
-        width: 100px!important;
-    }
-    .boxss{
-        width:100% !important;
-    }
-    input.btn.btn-outline-success {
-        width: 250px;
-    }
-        .d-flexs{
-            display:flex;
-        }
-        input.submit {
-            width: 200px!important;
-            bottom: -110px;
-            color: white;
-            font-weight: 500;
-        }
-        button.btn.mlbtn {
-            margin-left: 110px;
-        }
+@media (max-width: 800px) {
+  .main {
+    margin-left: 30px;
+    position: absolute;
+    top: 300px;
+  }
+  .detail {
+    width: 85% !important;
+  }
+
+  input#name,
+  input#email,
+  input#work,
+  textarea#textarea,
+  input#price {
+    width: 100%;
+  }
+  .pricendfile {
+    display: block !important;
+  }
+  .side_bar {
+    width: 300px !important;
+    padding-top: 50px;
+    margin: auto;
+    padding-left: 80px;
+  }
+  input.btn.w-25.btnSubmit.btn-dark.btn_custom {
+    width: 100px !important;
+  }
+  .boxss {
+    width: 100% !important;
+  }
+  input.btn.btn-outline-success {
+    width: 250px;
+  }
+  .d-flexs {
+    display: flex;
+  }
+  input.submit {
+    width: 200px !important;
+    bottom: -110px;
+    color: white;
+    font-weight: 500;
+  }
+  button.btn.mlbtn {
+    margin-left: 110px;
+  }
 }
-@media (max-width: 800px){
-    .detail{
-        width: 80%!important
-    }
- 
-    input#name,input#email,input#work,textarea#textarea,input#price{
-        width: 90%;
-    }
+@media (max-width: 800px) {
+  .detail {
+    width: 80% !important;
+  }
+
+  input#name,
+  input#email,
+  input#work,
+  textarea#textarea,
+  input#price {
+    width: 90%;
+  }
 }

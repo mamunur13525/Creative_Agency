@@ -30,17 +30,28 @@ const Login = () => {
         // The signed-in user info.
         const { displayName, photoURL, email } = result.user;
 
-        setLoggedInUser({ ...loggedInUser, displayName, photoURL, email });
         if (result.user.email) {
-          history.replace(from);
-          createNotification('success','Successfully','Login❤')
+          fetch(`http://localhost:5000/getAdmin?email=${email}`)
+            .then((res) => res.json())
+            .then((result) => {
+              console.log({ result });
+              if (result) {
+                setLoggedInUser({ ...loggedInUser, displayName, photoURL, email, admin: true });
+                history.replace(from);
+              } else {
+                setLoggedInUser({ ...loggedInUser, displayName, photoURL, email, admin: false });
+                history.replace(from);
+              }
+            });
+
+          createNotification("success", "Successfully", "Login❤");
         }
       })
       .catch(function (error) {
         // Handle Errors here.
         // const errorCode = error.code;
         const errorMessage = error.message;
-        createNotification('error',errorMessage)
+        createNotification("error", errorMessage);
 
         // The email of the user's account used.
         // const email = error.email;

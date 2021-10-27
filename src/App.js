@@ -13,11 +13,16 @@ import MakeAdmin from "./components/Admin/MakeAdmin/MakeAdmin";
 import Dashboard from "./components/Dashboard/Dashboard";
 import { NotificationContainer } from "react-notifications";
 import "react-notifications/lib/notifications.css";
+import ClientReviews from "./components/Admin/ClientReviews/ClientReviews";
 export const ChangeFindContext = createContext();
 export const ContentContext = createContext();
 
 function App() {
-  const [changeFetch, setChangeFetch] = useState({clientReview:false});
+  const [changeFetch, setChangeFetch] = useState({
+    clientReview: false,
+    serviceList: false,
+    adminList: false,
+  });
   const [content, setContent] = useState([]);
 
   return (
@@ -32,29 +37,32 @@ function App() {
               <Home />
             </Route>
             <Route path="/login">
-              <Login></Login>
+              <Login />
             </Route>
             <PrivateRoute path="/order">
-              <Order></Order>
+              <Order />
             </PrivateRoute>
             <PrivateRoute path="/dashboard">
-              <Dashboard></Dashboard>
+              <Dashboard />
             </PrivateRoute>
-            <Route path="/servicelist">
-              <Servicelist></Servicelist>
-            </Route>
-            <Route path="/review">
-              <Review></Review>
-            </Route>
-            <Route path="/admin/servicelist">
-              <ServicesAdmin></ServicesAdmin>
-            </Route>
-            <Route path="/admin/addservice">
-              <Addservice></Addservice>
-            </Route>
-            <Route path="/admin/makeadmin">
-              <MakeAdmin></MakeAdmin>
-            </Route>
+            <PrivateRoute path="/servicelist">
+              <Servicelist />
+            </PrivateRoute>
+            <PrivateRoute path="/review">
+              <Review />
+            </PrivateRoute>
+            <PrivateRoute path="/admin/servicelist">
+              <ServicesAdmin />
+            </PrivateRoute>
+            <PrivateRoute path="/admin/addservice">
+              <Addservice />
+            </PrivateRoute>
+            <PrivateRoute path="/admin/makeadmin">
+              <MakeAdmin />
+            </PrivateRoute>
+            <PrivateRoute path="/admin/client-reviews">
+              <ClientReviews />
+            </PrivateRoute>
             <Route path="*">
               <NotFound />
             </Route>

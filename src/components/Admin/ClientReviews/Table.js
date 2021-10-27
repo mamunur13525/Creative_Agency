@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import "./Table.css";
 import { IoClose } from "react-icons/io5";
 import { FaDatabase } from "react-icons/fa";
-import spinner from "../../images/icons/spinner.gif";
-import { ChangeFindContext } from "../../App";
-import { createNotification } from "../Shared/Notify";
+import spinner from "../../../images/icons/spinner.gif";
+import { ChangeFindContext } from "../../../App";
+import { createNotification } from "../../Shared/Notify";
 const fileIconSize = {
   fontSize: "2.4rem",
 };
@@ -31,12 +31,12 @@ const Table = ({ clientsReview }) => {
       });
   };
   return (
-    <div className="table-responsive">
+    <div className="table-responsive my-0">
       <div className="table-wrapper">
         <h2 className="text-left">Clients Reviews</h2>
         <table className="table table-striped table-hover">
           <thead>
-            <tr>
+            <tr className="table-head-row">
               <th>No.</th>
               <th>Name</th>
               <th>Work</th>
@@ -62,8 +62,14 @@ const Table = ({ clientsReview }) => {
                   <td>{client.work}</td>
                   <td>{client.description}</td>
                   <td>
-                    <span  onClick={() => delteIcon(client._id)}>
-                      <IoClose style={{cursor:'pointer', color: "red", fontSize: "1.5rem" }} />
+                    <span onClick={() => delteIcon(client._id)}>
+                      <IoClose
+                        style={{
+                          cursor: "pointer",
+                          color: "red",
+                          fontSize: "1.5rem",
+                        }}
+                      />
                     </span>
                   </td>
                 </tr>

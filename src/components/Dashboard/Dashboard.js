@@ -1,21 +1,18 @@
-import React, {  useEffect, useState } from "react";
-
-import ServicesAdmin from "../Admin/ServicesAdmin/ServicesAdmin";
-import Order from "../Order/Order";
+import React from "react";
+import {  useHistory } from "react-router";
+import useLocalStorage from "../../Service/useLocalStorage";
 
 const Dashboard = () => {
-  const [varify, setVarify] = useState();
+  const { push } = useHistory();
+  const [loggedInUser] = useLocalStorage("userInfo");
 
-  useEffect(() => {
-    // fetch(`http://localhost:5000/getAdmin?email=${loggedIn.email}`)
-    // .then(res => res.json())
-    // .then(result => {
-    //     setVarify(result)
-    // })
-  }, []);
-  console.log(varify);
+  if (loggedInUser.admin) {
+    push("/admin/addservice");
+  } else {
+    push("/order");
+  }
 
-  return <>{varify ? <ServicesAdmin></ServicesAdmin> : <Order></Order>}</>;
+  return null;
 };
 
 export default Dashboard;

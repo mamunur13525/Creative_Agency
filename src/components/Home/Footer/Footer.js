@@ -1,7 +1,8 @@
-import React, { useState,useRef  } from "react";
+import React, { useState, useRef } from "react";
 import "./Footer.css";
 import { SiMinutemailer } from "react-icons/si";
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
+import { createNotification } from "../../Shared/Notify";
 const Footer = () => {
   const [formValue, setFormValue] = useState({
     email: "",
@@ -19,13 +20,21 @@ const Footer = () => {
   // Submit Contact form
   const sendEmail = (e) => {
     e.preventDefault();
-    emailjs.sendForm('service_auhhwli', 'template_q71pdvw', form.current, 'user_wkUA3K3NKqk77TbFuYl1b')
-      .then((result) => {
-        console.log(result)
-          console.log(result.text);
-      }, (error) => {
-          console.log(error.text);
-      });
+    emailjs
+      .sendForm(
+        "service_auhhwli",
+        "template_q71pdvw",
+        form.current,
+        "user_wkUA3K3NKqk77TbFuYl1b"
+      )
+      .then(
+        (result) => {
+          createNotification("success", result);
+        },
+        (error) => {
+          createNotification("error", "Failed", "Someting went wrong!");
+        }
+      );
   };
   return (
     <footer id="contact">
@@ -75,7 +84,7 @@ const Footer = () => {
                 </button>
               </form>
             </div>
-          </div>  
+          </div>
         </div>
         <p className="text-center pt-5 mt-3 text-secondary">
           <small>copyright @mamun13525 Dev {new Date().getFullYear()}</small>
