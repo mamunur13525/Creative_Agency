@@ -31,7 +31,7 @@ const ClientReviews = () => {
       <header className="header d-flex">
         <AdminSidebar />
         <div className="main">
-          <h4>Client Reviews List</h4>
+          <h4>Client Reviews Showing Front Page List</h4>
           <div className="formbox">
             <div className="detail row pt-0">
               <div className="outsideTable">

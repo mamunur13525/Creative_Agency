@@ -1,53 +1,46 @@
 import React, { useContext, useState } from "react";
 import "../../Admin/ServicesAdmin/ServicesAdmin.css";
 import "../../Servicelist/Servicelist.css";
-import "./AddService.css";
 import useLocalStorage from "../../../Service/useLocalStorage";
 import AdminSidebar from "../../Shared/AdminSidebar";
-import AdminServicesList from "./AdminServicesList";
+// import AdminServicesList from "./AdminServicesList";
 import { ChangeFindContext } from "../../../App";
 import { createNotification } from "../../Shared/Notify";
 import NotFound from "../../NotFound";
-const Addservice = () => {
+import WorksList from "./WorksList";
+
+const OurWorks = () => {
   const [file, setFile] = useState(null);
-  const [info, setInfo] = useState({});
-  const [loggedInUser, setLoggedInUser] = useLocalStorage("userInfo");
+  
+  const [loggedInUser] = useLocalStorage("userInfo");
   const [changeFetch, setChangeFetch] = useContext(ChangeFindContext);
 
-  const handleBlur = (e) => {
-    const newTitle = { ...info };
-    newTitle[e.target.name] = e.target.value;
-    newTitle[e.target.name] = e.target.value;
-    setInfo(newTitle);
-  };
 
   const handleFileChange = (e) => {
     const newFile = e.target.files[0];
     setFile(newFile);
   };
+  console.log(file)
 
   const formData = new FormData();
   formData.append("file", file);
-  formData.append("title", info.title);
-  formData.append("description", info.description);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:5000/addAService", {
+    fetch("http://localhost:5000/add-works", {
       method: "POST",
       body: formData,
     })
       .then((response) => response.json())
       .then((data) => {
         createNotification("success", "Sucessfully", "Service Added");
-        setLoggedInUser({ ...loggedInUser, patch: data.path });
         setChangeFetch({
-          ...changeFetch,
-          serviceList: !changeFetch.serviceList,
-        });
+            ...changeFetch,
+            workList: !changeFetch.workList,
+          });
       })
-      .catch((error) => {
-        error(error);
+      .catch((err) => {
+        createNotification('error','Failed',err.msg);
       });
   };
 
@@ -58,38 +51,13 @@ const Addservice = () => {
       <header className="header d-flex">
         <AdminSidebar />
         <div className="main">
-          <h4>Add Service Showing in Front Page</h4>
+          <h4>Our Works Showing Front Page List</h4>
           <div className="formbox">
             <div className="detail row">
               <form onSubmit={handleSubmit} className="boxxxx form">
                 <div className="d-flex threeBox">
-                  <div className="boxss">
-                    <div className=" first">
-                      <h5 className="ml-4 mt-4">Services title</h5>
-                      <input
-                        onBlur={handleBlur}
-                        placeholder="Enter Title"
-                        type="text"
-                        name="title"
-                        id=""
-                        required
-                      />
-                    </div>
-                    <div className=" second">
-                      <h5 className="ml-4">Description </h5>
-                      <textarea
-                        onBlur={handleBlur}
-                        row="8"
-                        placeholder="Enter Your description"
-                        type="text"
-                        name="description"
-                        id=""
-                        required
-                      />
-                    </div>
-                  </div>
                   <div className="mt-4">
-                    <h5 className="ml-4">Icon</h5>
+                    <h5 className="ml-4">Work Image</h5>
                     <input
                       onChange={handleFileChange}
                       className="btn btn-outline-success"
@@ -108,7 +76,7 @@ const Addservice = () => {
               </form>
             </div>
             <div className="m-3">
-              <AdminServicesList />
+              <WorksList />
             </div>
           </div>
         </div>
@@ -117,4 +85,4 @@ const Addservice = () => {
   );
 };
 
-export default Addservice;
+export default OurWorks;

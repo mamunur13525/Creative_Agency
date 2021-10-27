@@ -1,28 +1,33 @@
 .blog .carousel-indicators {
-	left: 0;
-	top: auto;
-    bottom: -40px;
-
+  left: 0;
+  top: auto;
+  bottom: -40px;
 }
-.works{
-    background:#111430;
-    padding:120px  0px;
-    color:white;
+.works {
+  background: #111430;
+  padding: 120px 0px;
+  color: white;
 }
 
 /* The colour of the indicators */
 .blog .carousel-indicators {
-    left: 0;
-    top: auto;
-    bottom: -69px!important;
+  left: 0;
+  top: auto;
+  bottom: -69px !important;
 }
 .blog .carousel-indicators li {
-    background: #a3a3a3;
-    border-radius: 50%;
-    width: 19px;
-    height: 0px;
+  background: #a3a3a3;
+  border-radius: 50%;
+  width: 19px;
+  height: 0px;
 }
 
 .blog .carousel-indicators .active {
-background: #707070;
+  background: #707070;
+}
+
+#blogCarousel .slick-dots li button:before {
+  color: white !important;
+  font-size: 1.6rem !important;
+  margin-top: 2rem!important;
 }

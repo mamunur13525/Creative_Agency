@@ -21,8 +21,6 @@ const Services = () => {
         }
       });
   }, []);
-  console.log({services});
-  const handleCLick = (e) => {};
 
   return (
     <section className="services_section">
@@ -47,7 +45,6 @@ const Services = () => {
           {services &&
             services.serviceArr.map((service) => (
               <Service
-                onClick={(e) => handleCLick(e)}
                 key={service._id}
                 service={service}
               />

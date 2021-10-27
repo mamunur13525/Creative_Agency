@@ -1,27 +1,26 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import "./Order.css";
-import { useHistory } from "react-router-dom";
+import { useHistory,useLocation } from "react-router-dom";
 import { ContentContext } from "../../App";
 import AdminSidebar from "../Shared/AdminSidebar";
 import useLocalStorage from "../../Service/useLocalStorage";
-import NotFound from "../NotFound";
 const Order = () => {
   const [loggedInUser] = useLocalStorage("userInfo", {});
   const [content] = useContext(ContentContext);
   const [service, setService] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/id?id=${loggedInUser.id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        const { title, description, img } = data;
-        setService({ ...loggedInUser, title, description, img });
-      });
+    // fetch(`http://localhost:5000/id?id=${loggedInUser.id}`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     const { title, description, img } = data;
+    //     setService({ ...loggedInUser, title, description, img });
+    //   });
   }, []);
-
+  const location = useLocation()
   const history = useHistory();
-
+console.log(location)
   /* for Form Data  */
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
@@ -44,14 +43,12 @@ const Order = () => {
       });
   };
 
-  return loggedInUser.admin === true ? (
-    <NotFound />
-  ) : (
+  return (
     <div style={{ background: "yellow" }}>
       <header className="header d-flex">
         <AdminSidebar />
         <div className="main">
-          <h4>Pleace Order Now</h4>
+          <h4>Pleace Your Order</h4>
           <div className="formbox">
             <div className="detail w-50 ml-4">
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -74,9 +71,9 @@ const Order = () => {
                 />
                 <input
                   ref={register}
-                  placeholder="Your Order"
+                  placeholder="Your Order Name"
                   type="text"
-                  value={service.title || "Web Development"}
+                  defaultValue={location.state && location.state.serviceName}
                   name="work"
                   id="work"
                   readOnly
@@ -84,7 +81,7 @@ const Order = () => {
                 <textarea
                   ref={register}
                   className="form-control"
-                  placeholder="Products Details"
+                  placeholder="Order Details"
                   name="description"
                   id="textarea"
                   rows="4"

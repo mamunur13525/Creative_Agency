@@ -6,13 +6,12 @@ import AdminSidebar from "../../Shared/AdminSidebar";
 import AdminList from "./AdminList";
 import { createNotification } from "../../Shared/Notify";
 import { ChangeFindContext } from "../../../App";
-import NotFound from "../../NotFound";
 import useLocalStorage from "../../../Service/useLocalStorage";
 
 const MakeAdmin = () => {
   const [admin, setAdmin] = useState({});
   const [changeFetch, setChangeFetch] = useContext(ChangeFindContext);
-  const [loggedInUser] = useLocalStorage("userInfo");
+  const [loggedInUser, setLoggedInUser] = useLocalStorage("userInfo");
 
   const handleChange = (e) => {
     const email = { adminEmail: e.target.value };
@@ -35,6 +34,16 @@ const MakeAdmin = () => {
             adminList: !changeFetch.adminList,
           });
           createNotification("success", "Succesfully", result.message);
+          setLoggedInUser({ ...loggedInUser, admin: true });
+          if (admin.adminEmail === loggedInUser.email) {
+            setTimeout(() => {
+              createNotification(
+                "info",
+                "Please",
+                "Reload this page to show admin panel"
+              );
+            }, 2000);
+          }
         } else {
           createNotification("error", "Failed", result.message);
         }
@@ -42,14 +51,12 @@ const MakeAdmin = () => {
       .catch((err) => console.log(err));
   };
 
-  return !loggedInUser.admin ? (
-    <NotFound />
-  ) : (
+  return (
     <div style={{ background: "yellow" }}>
       <header className="header d-flex">
         <AdminSidebar />
         <div className="main">
-          <h4>Make Admin</h4>
+          <h4>Make Admin For More Functionality Show</h4>
           <div className="formbox">
             <div className="detail row justify-content-start">
               <form onSubmit={handleSubmit}>
@@ -71,7 +78,7 @@ const MakeAdmin = () => {
                 </div>
               </form>
             </div>
-            <AdminList />
+            {loggedInUser && loggedInUser.admin && <AdminList />}
           </div>
         </div>
       </header>

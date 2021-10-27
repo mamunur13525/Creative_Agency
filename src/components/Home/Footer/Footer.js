@@ -3,22 +3,14 @@ import "./Footer.css";
 import { SiMinutemailer } from "react-icons/si";
 import emailjs from "emailjs-com";
 import { createNotification } from "../../Shared/Notify";
+import spinner from "../../../images/icons/spinner.gif";
 const Footer = () => {
-  const [formValue, setFormValue] = useState({
-    email: "",
-    name: "",
-    message: "",
-  });
   const form = useRef();
-  //Form Change Value
-  const formChange = (e) => {
-    const valueName = e.target.name;
-    const value = e.target.value;
-    setFormValue({ ...formValue, [valueName]: value });
-  };
- 
+  const [showSpin, setShowSpin] = useState(false);
+
   // Submit Contact form
   const sendEmail = (e) => {
+    setShowSpin(true);
     e.preventDefault();
     emailjs
       .sendForm(
@@ -27,14 +19,21 @@ const Footer = () => {
         form.current,
         "user_wkUA3K3NKqk77TbFuYl1b"
       )
-      .then(
-        (result) => {
-          createNotification("success", result);
-        },
-        (error) => {
-          createNotification("error", "Failed", "Someting went wrong!");
-        }
-      );
+      .then((result) => {
+        setShowSpin(false);
+        createNotification("success", "Successfully", "Thank for Message me ❤❤");
+        setTimeout(() => {
+          createNotification(
+            "info",
+            "Reply_auto",
+            "I will reply as soon as possible."
+          );
+        }, 2000);
+      })
+      .catch((error) => {
+        setShowSpin(false);
+        createNotification("error", "Failed", "Someting went wrong!");
+      });
   };
   return (
     <footer id="contact">
@@ -57,18 +56,15 @@ const Footer = () => {
                 <input
                   placeholder="Enter email address"
                   className="form-control "
-                  type="text"
-                  name="email"
-                  id=""
-                  onChange={(e) => formChange(e)}
+                  type="email"
+                  name="from_email"
                   required
                 />
                 <input
                   placeholder="Enter name / company's name"
                   className="form-control my-3"
                   type="text"
-                  name="name"
-                  onChange={(e) => formChange(e)}
+                  name="from_name"
                   required
                 />
                 <textarea
@@ -76,12 +72,22 @@ const Footer = () => {
                   className="form-control mb-3"
                   rows="7"
                   name="message"
-                  onChange={(e) => formChange(e)}
                   required
                 ></textarea>
-                <button className="btn btn-dark send_btn" type="submit" id="">
-                  Send <SiMinutemailer />
-                </button>
+                {showSpin ? (
+                  <button className="btn btn-dark send_btn" type="text">
+                    <img
+                      style={{ width: "30px", margin: "auto" }}
+                      src={spinner}
+                      alt="spinner"
+                    />
+                  </button>
+                ) : (
+                  <button className="btn btn-dark send_btn" type="submit">
+                    Send
+                    <SiMinutemailer />
+                  </button>
+                )}
               </form>
             </div>
           </div>

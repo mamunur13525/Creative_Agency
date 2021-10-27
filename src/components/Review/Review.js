@@ -4,7 +4,6 @@ import { ChangeFindContext } from "../../App";
 import useLocalStorage from "../../Service/useLocalStorage";
 import AdminSidebar from "../Shared/AdminSidebar";
 import { createNotification } from "../Shared/Notify";
-import NotFound from '../NotFound'
 const Review = () => {
   const [loggedInUser] = useLocalStorage("userInfo", {});
   const { register, handleSubmit } = useForm();
@@ -41,9 +40,7 @@ const Review = () => {
       });
   };
 
-  return loggedInUser.admin ? (
-    <NotFound />
-  ) : (
+  return (
     <>
       <div style={{ background: "yellow" }}>
         <header className="header d-flex">

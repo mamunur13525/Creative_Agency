@@ -14,6 +14,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import { NotificationContainer } from "react-notifications";
 import "react-notifications/lib/notifications.css";
 import ClientReviews from "./components/Admin/ClientReviews/ClientReviews";
+import OurWorks from "./components/Admin/OurWorks/OurWorks";
 export const ChangeFindContext = createContext();
 export const ContentContext = createContext();
 
@@ -22,6 +23,8 @@ function App() {
     clientReview: false,
     serviceList: false,
     adminList: false,
+    worksList:false,
+    sidebarFetch:false
   });
   const [content, setContent] = useState([]);
 
@@ -57,11 +60,14 @@ function App() {
             <PrivateRoute path="/admin/addservice">
               <Addservice />
             </PrivateRoute>
-            <PrivateRoute path="/admin/makeadmin">
+            <Route path="/admin/makeadmin">
               <MakeAdmin />
-            </PrivateRoute>
+            </Route>
             <PrivateRoute path="/admin/client-reviews">
               <ClientReviews />
+            </PrivateRoute>
+            <PrivateRoute path="/admin/our-works">
+              <OurWorks />
             </PrivateRoute>
             <Route path="*">
               <NotFound />

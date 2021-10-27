@@ -6,6 +6,7 @@ import firebaseConfig from "./firebaseConfig";
 import { useHistory, useLocation } from "react-router-dom";
 import useLocalStorage from "../../Service/useLocalStorage";
 import { createNotification } from "../Shared/Notify";
+import {Link} from 'react-router-dom';
 
 require("firebase/auth");
 const firebase = require("firebase/app");
@@ -62,7 +63,9 @@ const Login = () => {
 
   return (
     <div className="text-center">
+      <Link to='/'>
       <img className="mainLogo" src={mainLogo} alt="" />
+      </Link>
       <div className="loginBox">
         <h3>Login With</h3>
         <div onClick={googleSingUp} className="continue_google_box">
