@@ -16,7 +16,7 @@ const Footer = () => {
     const value = e.target.value;
     setFormValue({ ...formValue, [valueName]: value });
   };
-
+ 
   // Submit Contact form
   const sendEmail = (e) => {
     e.preventDefault();
